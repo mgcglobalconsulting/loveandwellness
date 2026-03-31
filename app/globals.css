@@ -1,0 +1,216 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Great+Vibes&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary: 107 45 107;
+    --accent-gold: 212 175 106;
+    --accent-rose: 232 160 160;
+    --teal-deep: 44 95 106;
+    --cream: 250 246 241;
+    --midnight: 13 10 20;
+    --radius: 0.75rem;
+  }
+
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: #FAF6F1;
+    color: #1A1025;
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.7;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  h5, h6 {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  ::selection {
+    background-color: rgba(107, 45, 107, 0.2);
+    color: #1A1025;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #FAF6F1;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #9B4F9B;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #6B2D6B;
+  }
+}
+
+@layer components {
+  /* Glass card effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .glass-light {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+
+  /* Glow effects */
+  .glow-plum {
+    box-shadow: 0 0 30px rgba(107, 45, 107, 0.4);
+  }
+
+  .glow-gold {
+    box-shadow: 0 0 30px rgba(212, 175, 106, 0.35);
+  }
+
+  /* Text gradient */
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #D4AF6A 0%, #F0D49A 50%, #D4AF6A 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-plum {
+    background: linear-gradient(135deg, #6B2D6B 0%, #9B4F9B 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Primary button */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white rounded-full transition-all duration-300;
+    background: linear-gradient(135deg, #6B2D6B 0%, #9B4F9B 100%);
+    box-shadow: 0 4px 20px rgba(107, 45, 107, 0.4);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(107, 45, 107, 0.5);
+  }
+
+  .btn-primary:active {
+    transform: translateY(0);
+  }
+
+  /* Gold button */
+  .btn-gold {
+    @apply inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-full transition-all duration-300;
+    background: linear-gradient(135deg, #D4AF6A 0%, #F0D49A 50%, #D4AF6A 100%);
+    color: #1A1025;
+    box-shadow: 0 4px 20px rgba(212, 175, 106, 0.4);
+  }
+
+  .btn-gold:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(212, 175, 106, 0.5);
+  }
+
+  /* Outline button */
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white rounded-full border-2 border-white/40 transition-all duration-300;
+  }
+
+  .btn-outline:hover {
+    @apply bg-white/10 border-white/60;
+    transform: translateY(-2px);
+  }
+
+  /* Section headings */
+  .section-heading {
+    @apply text-4xl md:text-5xl lg:text-6xl font-light tracking-tight;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .section-subheading {
+    @apply text-xl md:text-2xl font-light;
+    font-family: 'Playfair Display', serif;
+  }
+
+  /* Script accent text */
+  .script-accent {
+    font-family: 'Great Vibes', cursive;
+    @apply text-3xl md:text-4xl;
+  }
+
+  /* Input styles */
+  .form-input {
+    @apply w-full px-4 py-3 rounded-xl border border-gray-200 bg-white/80 text-text-primary placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200;
+  }
+
+  .form-textarea {
+    @apply w-full px-4 py-3 rounded-xl border border-gray-200 bg-white/80 text-text-primary placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 resize-none;
+  }
+
+  /* Photo frame effect */
+  .photo-frame {
+    @apply relative rounded-2xl overflow-hidden;
+    box-shadow: 0 20px 60px rgba(107, 45, 107, 0.25), 0 4px 15px rgba(0,0,0,0.1);
+  }
+
+  .photo-frame::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(135deg, rgba(212, 175, 106, 0.6), rgba(107, 45, 107, 0.4));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Countdown timer */
+  .countdown-unit {
+    @apply flex flex-col items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-xl;
+    background: rgba(107, 45, 107, 0.2);
+    border: 1px solid rgba(212, 175, 106, 0.3);
+  }
+
+  /* Seat badge */
+  .seat-badge {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold;
+    background: rgba(212, 175, 106, 0.15);
+    border: 1px solid rgba(212, 175, 106, 0.4);
+    color: #D4AF6A;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
