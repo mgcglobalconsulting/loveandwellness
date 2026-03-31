@@ -1,4 +1,4 @@
-d"use client";
+"use client";
 
 import Link from "next/link";
 import { Lock, Mail, User } from "lucide-react";
