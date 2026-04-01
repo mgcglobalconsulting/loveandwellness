@@ -7,7 +7,6 @@ export default function ShopPage() {
     {
       id: "journal",
       name: "The 'Attracting Love' Journal",
-      price: "$35.00",
       category: "Wellness & Lifestyle",
       image: "/images/og-image.jpg", // Placeholder
       description: "A 90-day guided prompt journal designed to restructure your limiting beliefs around relationships."
@@ -15,7 +14,6 @@ export default function ShopPage() {
     {
       id: "candle",
       name: "Sacred Space Soy Candle",
-      price: "$45.00",
       category: "Wellness & Lifestyle",
       image: "/images/og-image.jpg", // Placeholder
       description: "Hand-poured rose and lavender infused soy candle to elevate the energy of your home."
@@ -23,7 +21,6 @@ export default function ShopPage() {
     {
       id: "cards",
       name: "Love & Worthiness Affirmation Deck",
-      price: "$28.00",
       category: "Digital & Print",
       image: "/images/og-image.jpg", // Placeholder
       description: "52 beautifully designed cards with daily affirmations channeled by Dr. Patricia."
@@ -31,7 +28,6 @@ export default function ShopPage() {
     {
       id: "crystal",
       name: "Rose Quartz Heart Set",
-      price: "$55.00",
       category: "Crystals & Energy",
       image: "/images/og-image.jpg", // Placeholder
       description: "Ethically sourced, reiki-infused rose quartz pieces for your nightstand or altar."
@@ -78,7 +74,6 @@ export default function ShopPage() {
               <div className="p-6 flex flex-col flex-grow">
                 <p className="text-xs font-bold uppercase tracking-wider text-accent-gold mb-2">{product.category}</p>
                 <h3 className="text-lg font-serif text-text-primary mb-2 line-clamp-2">{product.name}</h3>
-                <p className="text-text-primary font-light text-xl mb-4">{product.price}</p>
                 <p className="text-sm text-gray-500 mb-6 flex-grow">{product.description}</p>
                 
                 <button className="w-full py-3 rounded-lg border border-primary text-primary font-semibold hover:bg-primary hover:text-white transition-colors">

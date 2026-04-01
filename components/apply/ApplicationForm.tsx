@@ -198,22 +198,6 @@ export function ApplicationForm() {
             <p className="text-red-500 text-xs mt-1">{errors.commitment_level.message}</p>
           )}
         </div>
-        <div>
-          <label className="block text-sm font-accent font-semibold text-gray-700 mb-2">
-            Investment comfort level *
-          </label>
-          <select {...register("investment_comfort")} className="form-input">
-            <option value="">Select...</option>
-            <option value="under_500">Under $500</option>
-            <option value="500_1000">$500 – $1,000</option>
-            <option value="1000_2500">$1,000 – $2,500</option>
-            <option value="2500_5000">$2,500 – $5,000</option>
-            <option value="5000_plus">$5,000+</option>
-          </select>
-          {errors.investment_comfort && (
-            <p className="text-red-500 text-xs mt-1">{errors.investment_comfort.message}</p>
-          )}
-        </div>
       </div>
 
       <div>

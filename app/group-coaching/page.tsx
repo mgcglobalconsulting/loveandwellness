@@ -5,7 +5,7 @@ import GroupCoachingCheckout from "./GroupCoachingCheckout";
 export const metadata = {
   title: "The Love Circle — Group Coaching | Love & Wellness Coaching",
   description:
-    "Join Dr. Patricia George's intimate 8-week group coaching experience. Weekly live calls, sisterhood community, guest experts, and a proven path to lasting love — at a fraction of the VIP investment.",
+    "Join Dr. Patricia George's intimate 8-week group coaching experience. Weekly live calls, sisterhood community, guest experts, and a proven path to lasting love.",
 };
 
 const INCLUDED_ITEMS = [
@@ -86,7 +86,7 @@ const FAQS = [
   },
   {
     q: "Is there a payment plan?",
-    a: "Yes. You may pay in full ($2,500) or choose our 3-payment plan of $900/month. Both options grant full, immediate access to all community materials and the bonus workshop library.",
+    a: "Yes. Flexible payment options are available. Investment details are shared upon application review.",
   },
 ];
 
@@ -125,7 +125,7 @@ export default function GroupCoachingPage() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="#enroll" className="btn-gold">
-              Join the Love Circle — $2,500
+              Join the Love Circle
             </a>
             <a href="#whats-included" className="btn-outline">
               See What&apos;s Included
@@ -143,7 +143,7 @@ export default function GroupCoachingPage() {
             </span>
             <span className="flex items-center gap-1.5">
               <Check className="w-4 h-4 text-accent-gold" />
-              Payment Plans Available
+              Flexible Payment Options
             </span>
           </div>
         </div>
@@ -252,7 +252,7 @@ export default function GroupCoachingPage() {
         </div>
       </section>
 
-      {/* Pricing & Enrollment */}
+      {/* Enrollment */}
       <section id="enroll" className="bg-midnight py-24 relative overflow-hidden">
         <div
           className="absolute inset-0 opacity-50"
@@ -271,20 +271,11 @@ export default function GroupCoachingPage() {
               8 weeks. Intimate cohort. Profound transformation.
             </p>
 
-            {/* Price */}
+            {/* Apply note */}
             <div className="mb-8 pb-8 border-b border-white/10">
-              <div className="flex items-center justify-center gap-4 mb-2">
-                <span className="text-5xl font-light text-cream">$2,500</span>
-                <div className="text-left">
-                  <p className="text-accent-gold text-sm font-semibold">Pay in Full</p>
-                  <p className="text-gray-500 text-xs">Best value</p>
-                </div>
-              </div>
-              <p className="text-gray-500 text-sm">
-                — or —{" "}
-                <span className="text-accent-gold font-medium">
-                  3 payments of $900
-                </span>
+              <p className="text-gray-300 font-light text-sm leading-relaxed">
+                Investment details — including flexible payment options — are
+                shared privately upon application review.
               </p>
             </div>
 

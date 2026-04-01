@@ -6,25 +6,21 @@ const placeholderProducts = [
   {
     id: "1",
     name: "Love & Wellness Signature Journal",
-    price: "$29.00",
     image: "https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=600&auto=format&fit=crop",
   },
   {
     id: "2",
     name: "Rose & Lavender Intentions Candle",
-    price: "$35.00",
     image: "https://images.unsplash.com/photo-1602874801007-bd458bb1b8b6?q=80&w=600&auto=format&fit=crop",
   },
   {
     id: "3",
     name: "Healing Crystal Set",
-    price: "$45.00",
     image: "https://images.unsplash.com/photo-1515089309-84384bfbde0e?q=80&w=600&auto=format&fit=crop",
   },
   {
     id: "4",
     name: "Daily Affirmation Cards",
-    price: "$19.00",
     image: "https://images.unsplash.com/photo-1585834882583-057bfd21095d?q=80&w=600&auto=format&fit=crop",
   },
 ];
@@ -80,9 +76,6 @@ export function ShopPreview() {
               <h4 className="text-lg font-serif text-text-primary mb-1">
                 {product.name}
               </h4>
-              <p className="text-gray-500 font-medium">
-                {product.price}
-              </p>
             </div>
           ))}
         </div>
