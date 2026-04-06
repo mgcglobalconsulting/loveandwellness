@@ -33,6 +33,7 @@ export function ApplicationForm() {
 
   async function onSubmit(data: FormData) {
     setSubmissionError(null);
+    console.log("Submitting application", data);
 
     try {
       const res = await fetch("/api/applications", {
@@ -41,8 +42,10 @@ export function ApplicationForm() {
         body: JSON.stringify(data),
       });
 
+      const body = await res.json().catch(() => null);
+      console.log("Application API response", { status: res.status, body });
+
       if (!res.ok) {
-        const body = await res.json().catch(() => null);
         console.error("Application submit failed", { status: res.status, body });
         setSubmissionError(
           body?.error || "Failed to submit application. Please try again."
@@ -50,6 +53,7 @@ export function ApplicationForm() {
         return;
       }
 
+      setSubmissionError(null);
       setSubmitted(true);
     } catch (error) {
       console.error("Application submit exception", error);
