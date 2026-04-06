@@ -18,6 +18,7 @@ export async function GET() {
   }
 
   try {
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
     const supabase = await createClient();
     const { error } = await supabase.from("applications").select("id").limit(1);
 
@@ -26,13 +27,14 @@ export async function GET() {
         {
           ok: false,
           message: "Failed to query Supabase applications table",
+          supabaseUrl,
           error: error.message,
         },
         { status: 500 }
       );
     }
 
-    return NextResponse.json({ ok: true, message: "Supabase environment and connectivity are healthy" });
+    return NextResponse.json({ ok: true, message: "Supabase environment and connectivity are healthy", supabaseUrl });
   } catch (error) {
     return NextResponse.json(
       {
