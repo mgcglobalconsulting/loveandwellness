@@ -28,7 +28,12 @@ export async function POST(request: Request) {
     }
 
     const application = result.data;
-    const supabase = await createClient();
+    // Use service role client for applications (bypasses RLS)
+    const { createClient } = await import("@supabase/supabase-js");
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!
+    );
 
     const { data, error } = await supabase
       .from("applications")
