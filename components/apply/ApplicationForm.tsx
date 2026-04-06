@@ -24,6 +24,7 @@ type FormData = z.infer<typeof schema>;
 
 export function ApplicationForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [submissionError, setSubmissionError] = useState<string | null>(null);
   const {
     register,
     handleSubmit,
@@ -31,12 +32,31 @@ export function ApplicationForm() {
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
   async function onSubmit(data: FormData) {
-    const res = await fetch("/api/applications", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
-    if (res.ok) setSubmitted(true);
+    setSubmissionError(null);
+
+    try {
+      const res = await fetch("/api/applications", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!res.ok) {
+        const body = await res.json().catch(() => null);
+        console.error("Application submit failed", { status: res.status, body });
+        setSubmissionError(
+          body?.error || "Failed to submit application. Please try again."
+        );
+        return;
+      }
+
+      setSubmitted(true);
+    } catch (error) {
+      console.error("Application submit exception", error);
+      setSubmissionError(
+        "There was an unexpected error submitting your application. Please refresh and try again."
+      );
+    }
   }
 
   if (submitted) {
@@ -81,6 +101,11 @@ export function ApplicationForm() {
           All fields are required unless marked optional. Be as honest and
           specific as possible — Dr. Patricia reads every word.
         </p>
+        {submissionError && (
+          <div className="mt-4 rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">
+            {submissionError}
+          </div>
+        )}
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -196,6 +221,23 @@ export function ApplicationForm() {
           </select>
           {errors.commitment_level && (
             <p className="text-red-500 text-xs mt-1">{errors.commitment_level.message}</p>
+          )}
+        </div>
+
+        <div>
+          <label className="block text-sm font-accent font-semibold text-gray-700 mb-2">
+            What investment range feels comfortable for you? *
+          </label>
+          <select {...register("investment_comfort")} className="form-input">
+            <option value="">Select...</option>
+            <option value="under_1k">Under $1,000</option>
+            <option value="1k_3k">$1,000–$3,000</option>
+            <option value="3k_5k">$3,000–$5,000</option>
+            <option value="5k_10k">$5,000–$10,000</option>
+            <option value="10k_plus">$10,000+</option>
+          </select>
+          {errors.investment_comfort && (
+            <p className="text-red-500 text-xs mt-1">{errors.investment_comfort.message}</p>
           )}
         </div>
       </div>
