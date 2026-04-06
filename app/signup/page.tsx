@@ -23,15 +23,40 @@ export default function SignupPage() {
   async function handleGoogleLogin() {
     setIsPending(true);
     setError(null);
-    const supabase = createClient();
-    const { error } = await supabase.auth.signInWithOAuth({
+    console.log("Google OAuth flow starting", {
       provider: "google",
-      options: {
-        redirectTo: `${location.origin}/auth/callback`,
-      },
+      redirectTo: "https://loveandwellnesscoaching.vercel.app/dashboard",
     });
-    if (error) {
-      setError(error.message);
+
+    try {
+      const supabase = createClient();
+      const { data, error } = await supabase.auth.signInWithOAuth({
+        provider: "google",
+        options: {
+          redirectTo: "https://loveandwellnesscoaching.vercel.app/dashboard",
+        },
+      });
+
+      console.log("Google OAuth result", { data, error });
+
+      if (error) {
+        setError(error.message);
+        console.error("Google OAuth error", error);
+        setIsPending(false);
+        return;
+      }
+
+      if (data?.url) {
+        console.log("Navigating to OAuth provider URL", data.url);
+        window.location.assign(data.url);
+        return;
+      }
+
+      setIsPending(false);
+      console.warn("Google OAuth did not return a redirect URL or error");
+    } catch (unexpected) {
+      console.error("Unexpected Google OAuth exception", unexpected);
+      setError("Unexpected authorization error. Check the browser console for details.");
       setIsPending(false);
     }
   }
